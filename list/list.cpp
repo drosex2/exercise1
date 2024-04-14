@@ -80,9 +80,11 @@
     }
     template <typename Data>
     List<Data>::List(List<Data>&& listMove) noexcept{
+        std::swap(size,listMove.size);
         std::swap(head,listMove.head);
         std::swap(tail,listMove.tail);
-        std::swap(size,listMove.size);
+        
+        
     }
 
 
@@ -95,9 +97,40 @@
     //copy assignment //da rivedere
     template<typename Data> 
     List<Data>& List<Data>::operator=(const List<Data>& listCopy){
-        List<Data> *tmpList = new List<Data>(listCopy);
-        std::swap(*tmpList, *this);
-        delete tmpList;
+        // List<Data> *tmpList = new List<Data>(listCopy);
+        // std::swap(*tmpList, *this);
+        // delete tmpList;
+        // return *this;
+        if(size<=listCopy.size){
+            if(tail==nullptr){
+                List<Data> * tmpList= new List<Data>(listCopy);
+                std::swap(*tmpList,*this);
+                delete tmpList;
+            }else{
+                Node * headCopy=listCopy.head;
+                for(Node * current=head; current!=nullptr;current=current->next, headCopy=headCopy->next){
+                    current->element=headCopy->element;
+                }
+                if(headCopy!=nullptr){
+                    Node * tmp= new Node(*listCopy.tail);
+                    tail->next=headCopy->Clone(tmp);
+                    tail=tmp;
+                }
+            }
+        }else{
+            if(listCopy.tail== nullptr){
+                delete head;
+                tail=head=nullptr;
+            }else{
+                Node * current = head;
+                for(Node * copy=listCopy.head; copy!=nullptr; copy=copy->next, tail = current, current=current->next){
+                    current->element=copy->element;
+                }
+                delete current;
+                tail->next= nullptr;
+            }
+        }
+        size=listCopy.size;
         return *this;
     }
 
@@ -132,7 +165,7 @@
       else{
          return false;
       }
-
+        
     }
     template<typename Data>
     bool List<Data>::operator!=(const List<Data>& list) const noexcept{
