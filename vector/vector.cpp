@@ -25,10 +25,11 @@ namespace lasd {
     Vector<Data>::Vector(MappableContainer<Data>&& mappableCon) : Vector(mappableCon.size){
         unsigned long index=0;
         mappableCon.Map(
-            [this, &index](const Data & data){
+            [this, &index](Data & data){
                 Elements[index++]=std::move(data);
             }
         );
+        
     }
 
     //Copy constructor
