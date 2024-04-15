@@ -4,7 +4,7 @@ namespace lasd {
 /* ************************************************************************** */
 //specific constructors
 template <typename Data>
-StackVec<Data>::StackVec():Vector<Data>(1){};
+StackVec<Data>::StackVec():Vector<Data>(0){};
 template <typename Data>
 StackVec<Data>::StackVec(const TraversableContainer<Data>& container):Vector<Data>(container),index(size){};
 
@@ -18,7 +18,7 @@ StackVec<Data>::StackVec(const StackVec<Data>& stackVecCopy):Vector<Data>(stackV
 
 //move constructor
 template <typename Data>
-StackVec<Data>::StackVec(StackVec<Data>&& stackVecMove) noexcept :Vector<Data>(stackVecMove){
+StackVec<Data>::StackVec(StackVec<Data>&& stackVecMove) noexcept :Vector<Data>(std::move(stackVecMove)){
     std::swap(index,stackVecMove.index);
 }
 
@@ -149,7 +149,13 @@ void StackVec<Data>::Clear(){
 template <typename Data>
 void StackVec<Data>::Expand(){
     if(index==size){
-            Vector<Data>::Resize(size * 2);    
+        if(size!=0){
+            Vector<Data>::Resize(size * 2);
+        }
+        else{
+            Vector<Data>::Resize(2);
+        }
+                
     }
 }
 

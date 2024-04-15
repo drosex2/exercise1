@@ -52,7 +52,7 @@ const Data& QueueLst<Data>::Head() const {
 
 template<typename Data>
 Data& QueueLst<Data>::Head(){
-    return List<Data>::Head();
+    return List<Data>::Front();
 }
 
 
@@ -63,8 +63,8 @@ void QueueLst<Data>::Dequeue(){
 
 
 template<typename Data>
-Data& QueueLst<Data>::HeadNDequeue(){
-    List<Data>::FrontNRemove();
+Data QueueLst<Data>::HeadNDequeue(){
+    return List<Data>::FrontNRemove();
 }
 
 template<typename Data>

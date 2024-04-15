@@ -14,7 +14,7 @@ namespace lasd {
 /* ************************************************************************** */
 
 template <typename Data>
-class QueueLst:virtual public Queue<Data>,virtual public List<Data> {
+class QueueLst:virtual public Queue<Data>,virtual protected List<Data> {
   // Must extend Queue<Data>,
   //             List<Data>
 
@@ -24,8 +24,7 @@ private:
 
 protected:
 
-  // using List<Data>::???;
-
+  
   // ...
 
 public:
@@ -73,7 +72,7 @@ public:
   const Data& Head() const override; // Override Queue member (non-mutable version; must throw std::length_error when empty)
   Data& Head() override; // Override Queue member (mutable version; must throw std::length_error when empty)
   void Dequeue() override; // Override Queue member (must throw std::length_error when empty)
-  Data& HeadNDequeue() override; // Override Queue member (must throw std::length_error when empty)
+  Data HeadNDequeue() override; // Override Queue member (must throw std::length_error when empty)
   void Enqueue(const Data&) override; // Override Queue member (copy of the value)
   void Enqueue(Data&&) override; // Override Queue member (move of the value)
 
