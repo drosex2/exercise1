@@ -30,7 +30,7 @@ protected:
 public:
 
   // Default constructor
-  QueueLst()=default;
+  QueueLst();
 
   /* ************************************************************************ */
 

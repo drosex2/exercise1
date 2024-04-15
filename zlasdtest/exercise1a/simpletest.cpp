@@ -343,7 +343,7 @@ void stestListString(uint & testnum, uint & testerr) {
   testerr += loctesterr;
 }
 
- void stestList(uint & testnum, uint & testerr) {
+void stestList(uint & testnum, uint & testerr) {
   uint loctestnum = 0, loctesterr = 0;
   stestListInt(loctestnum, loctesterr);
   stestListDouble(loctestnum, loctesterr);
@@ -351,7 +351,7 @@ void stestListString(uint & testnum, uint & testerr) {
   testnum += loctestnum;
   testerr += loctesterr;
   cout << endl << "Exercise 1A - List (Errors/Tests: " << loctesterr << "/" << loctestnum << ")" << endl;
- }
+}
 
 /* ************************************************************************** */
 
@@ -453,11 +453,11 @@ void stestVectorListString(uint & testnum, uint & testerr) {
 
     lasd::List<string> coplsty(move(vec));
     EqualList(loctestnum, loctesterr, coplst, coplsty, true);
-    EqualVector(loctestnum, loctesterr, vec, copvec, false);//
+    EqualVector(loctestnum, loctesterr, vec, copvec, false);
 
     lasd::SortableVector<string> copvecy(move(lst));
     EqualVector(loctestnum, loctesterr, copvec, copvecy, true);
-    EqualList(loctestnum, loctesterr, lst, coplst, false);//
+    EqualList(loctestnum, loctesterr, lst, coplst, false);
   }
   catch (...) {
     loctestnum++; loctesterr++;
@@ -468,7 +468,7 @@ void stestVectorListString(uint & testnum, uint & testerr) {
   testerr += loctesterr;
 }
 
- void stestVectorList(uint & testnum, uint & testerr) {
+void stestVectorList(uint & testnum, uint & testerr) {
   uint loctestnum = 0, loctesterr = 0;
   stestVectorListInt(loctestnum, loctesterr);
   stestVectorListDouble(loctestnum, loctesterr);
@@ -476,7 +476,7 @@ void stestVectorListString(uint & testnum, uint & testerr) {
   testnum += loctestnum;
   testerr += loctesterr;
   cout << endl << "Exercise 1A - Vector/List (Errors/Tests: " << loctesterr << "/" << loctestnum << ")" << endl;
- }
+}
 
 /* ************************************************************************** */
 

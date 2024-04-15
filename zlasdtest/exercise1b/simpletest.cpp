@@ -38,18 +38,17 @@ void stestStackInt(Stk & stk, uint & testnum, uint & testerr) {
 
     Empty(loctestnum, loctesterr, stk, false);
     Size(loctestnum, loctesterr, stk, true, 5);
-    
+
     TopNPop(loctestnum, loctesterr, stk, true, 2);
     Top(loctestnum, loctesterr, stk, true, 1);
     Top(loctestnum, loctesterr, (const Stk) stk, true, 1);
-    
+
     Stk copstk(stk);
     EqualStack(loctestnum, loctesterr, stk, copstk, true);
     PushC(loctestnum, loctesterr, stk, 5);
     NonEqualStack(loctestnum, loctesterr, stk, copstk, true);
-    //Size(loctestnum, loctesterr, stk, true, 5);//
+
     copstk = stk;
-   
     EqualStack(loctestnum, loctesterr, stk, copstk, true);
     PushC(loctestnum, loctesterr, copstk, 6);
     NonEqualStack(loctestnum, loctesterr, stk, copstk, true);
@@ -214,15 +213,13 @@ void stestQueueInt(Que & que, uint & testnum, uint & testerr) {
     HeadNDequeue(loctestnum, loctesterr, que, true, 4);
     Head(loctestnum, loctesterr, que, true, 0);
     Head(loctestnum, loctesterr, (const Que) que, true, 0);
-    
+    cout<<que.Head()<<endl;
     Que copque(que);
-
     EqualQueue(loctestnum, loctesterr, que, copque, true);
     EnqueueC(loctestnum, loctesterr, que, 5);
     NonEqualQueue(loctestnum, loctesterr, que, copque, true);
-  
+
     copque = que;
-    
     EqualQueue(loctestnum, loctesterr, que, copque, true);
     EnqueueC(loctestnum, loctesterr, copque, 6);
     NonEqualQueue(loctestnum, loctesterr, que, copque, true);
@@ -240,7 +237,6 @@ void stestQueueInt(Que & que, uint & testnum, uint & testerr) {
     Dequeue(loctestnum, loctesterr, movque, false);
     Empty(loctestnum, loctesterr, movque, true);
     Size(loctestnum, loctesterr, movque, true, 0);
-    
   }
   catch (...) {
     loctestnum++; loctesterr++;
@@ -366,8 +362,8 @@ void stestQueue(uint & testnum, uint & testerr) {
 
 /* ************************************************************************** */
 
- void testSimpleExercise1B(uint & testnum, uint & testerr) {
+void testSimpleExercise1B(uint & testnum, uint & testerr) {
   stestStack(testnum, testerr);
   stestQueue(testnum, testerr);
   cout << endl << "Exercise 1B (Simple Test) (Errors/Tests: " << testerr << "/" << testnum << ")" << endl;
- }
+}

@@ -78,7 +78,7 @@
         //     size=listCopy.size;
         // }
         if(this != &listCopy){                                
-            if(listCopy.head==nullptr){
+            if(listCopy.tail==nullptr){
             head=nullptr;
             tail=nullptr;
             size=0;
@@ -368,16 +368,14 @@
     template <typename Data>
     const Data& List<Data>::Front()const{
         if(head!=nullptr){
-           
             return head->element;
-         
         }else{
-            throw std::length_error("Access to an empty list");
+            throw std::length_error("Access to an empty list!");
         }
     }
 
     template <typename Data>
-     Data& List<Data>::Front(){
+    Data& List<Data>::Front(){
         if(head!=nullptr){
            
             return head->element;
