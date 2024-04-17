@@ -213,7 +213,7 @@ void stestQueueInt(Que & que, uint & testnum, uint & testerr) {
     HeadNDequeue(loctestnum, loctesterr, que, true, 4);
     Head(loctestnum, loctesterr, que, true, 0);
     Head(loctestnum, loctesterr, (const Que) que, true, 0);
-    cout<<que.Head()<<endl;
+    
     Que copque(que);
     EqualQueue(loctestnum, loctesterr, que, copque, true);
     EnqueueC(loctestnum, loctesterr, que, 5);

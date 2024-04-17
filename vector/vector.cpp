@@ -56,9 +56,14 @@ namespace lasd {
     //Copy assignment 
     template<typename Data>
     Vector<Data>& Vector<Data>::operator=(const Vector<Data>& vectorCopy){
-        Vector<Data> *tmpVector= new Vector<Data>(vectorCopy);
-        std::swap(*tmpVector,*this);
-        delete tmpVector;
+        // Vector<Data> *tmpVector= new Vector<Data>(vectorCopy);
+        // std::swap(*tmpVector,*this);
+        // delete tmpVector;
+        // return *this;
+        size=vectorCopy.size;
+        delete[] Elements;
+        Elements=new Data[size];
+        std::copy(vectorCopy.Elements, vectorCopy.Elements+vectorCopy.size, Elements);
         return *this;
     }
 

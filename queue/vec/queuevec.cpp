@@ -27,7 +27,7 @@ QueueVec<Data>::QueueVec(QueueVec<Data>&& queueVecMove) noexcept :Vector<Data>(s
     std::swap(head,queueVecMove.head);
     std::swap(tail,queueVecMove.tail);
 
-    //queueVecMove.Clear();
+    
 }
 
 //copy assignment
