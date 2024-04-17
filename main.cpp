@@ -1,7 +1,7 @@
 
 #include "zlasdtest/test.hpp"
 
-#include "zlasdtest/test.hpp"
+#include "zmytest/test.hpp"
 
 /* ************************************************************************** */
 
@@ -11,6 +11,15 @@
 
 int main() {
   std::cout << "Lasd Libraries 2024" << std::endl;
-  lasdtest();
+  int choice;
+  std::cout<<"1) lasdtest \n2) mytest"<<std::endl;
+  std::cin>>choice;
+  if(choice==1){
+    lasdtest();
+  }else if(choice==2)
+  {
+    mytest();
+  }
+  
   return 0;
 }
