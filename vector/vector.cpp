@@ -125,12 +125,13 @@ namespace lasd {
             size=newSize;
             delete[] tmpElements;
         }
+        
     }
 
     //operator[] (non-mutable)
     template <typename Data>
     const Data& Vector<Data>::operator[](const unsigned long index) const {
-        if(index<size)
+        if(index<Size())
         {
             return Elements[index];
         }else
@@ -141,7 +142,7 @@ namespace lasd {
     //operator[] (mutable)
     template <typename Data>
     Data& Vector<Data>::operator[](const unsigned long index) {
-        if(index<size)
+        if(index<Size())
         {
             return Elements[index];
         }else

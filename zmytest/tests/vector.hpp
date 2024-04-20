@@ -46,6 +46,7 @@ void vectorInt(){
     vec.Sort();
     cout<<"Stampa del vettore dopo averlo ordinato:"<<endl;
     MapPreOrder(vec,&MapPrint<int>);
+    cout<<endl;
 }
 void vectorDouble(){
     cout<<"--------------TEST VECTOR DOUBLE--------------"<<endl;
@@ -71,7 +72,7 @@ void vectorDouble(){
     cout<<"Inserisci un indice: ";
     cin>>index;
     try{
-        cout<<"Value: "<<vec[index]<<endl;
+        cout<<"Valore: "<<vec[index]<<endl;
     }catch(exception& exc){
         cout<<exc.what()<<endl;
     }
@@ -82,6 +83,59 @@ void vectorDouble(){
     vec.Sort();
     cout<<"Stampa del vettore dopo averlo ordinato:"<<endl;
     MapPreOrder(vec,&MapPrint<double>);
+    cout<<endl;
+}
+void vectorString(){
+     cout<<"--------------TEST VECTOR STRING--------------"<<endl;
+    std::mt19937 mt(std::random_device{}());
+    std::string characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    std::uniform_int_distribution<int> dist(0, characters.length() - 1);
+    std::string randomString;
+    unsigned long size,index;
+    string value;
+
+    cout<<"Inserisci una dimensione: ";
+    cin>>size;
+    lasd::SortableVector<string> secVec(size);
+    for (unsigned long i = 0; i < size; i++) {
+        randomString = characters[dist(mt)];
+        secVec[i]=randomString;
+    }
+    cout<<"Copio il vettore in un altro vettore"<<endl;
+    lasd::SortableVector<string> vec;
+
+    vec=move(secVec);
+
+    cout<<vec.Size();
+    
+    
+    FoldPreOrder(vec,&FoldAdd<string>,string(""));
+    FoldPostOrder(vec,&FoldAdd<string>,string(""));
+
+    cout<<"Inserisci un indice: ";
+    cin>>index;
+    try{
+        cout<<"Valore: "<<vec[index]<<endl;
+    }catch(exception& exc){
+        cout<<exc.what()<<endl;
+    }
+
+    cout<<"Inserisci un valore da cercare nel vettore: ";
+    cin>>value;
+    cout << ((vec.Exists(value)) ? "Il valore "+value+" e' presente" : "il valore "+value+" non e' presente") << "!" << endl;
+    vec.Sort();
+    cout<<"Stampa del vettore dopo averlo ordinato:"<<endl;
+    MapPreOrder(vec,&MapPrint<string>);
+    cout<<endl;
+    vec.Resize(size*2);
+    cout<<vec.Size()<<endl;
+    secVec=vec;
+    for (unsigned long i = size+1; i < size*2; i++) {
+        randomString = characters[dist(mt)];
+        secVec[i]=randomString;
+    }
+    MapPreOrder(secVec,&MapPrint<string>);
+    cout<<secVec.Front()<<endl;
 }
 
 /* ************************************************************************** */
