@@ -37,7 +37,7 @@ public:
 
       // Comparison operators
       virtual bool operator==(const Container&) const noexcept=delete; // Comparison of abstract types is not possible.
-      virtual bool operator!=(const Container&) const noexcept=delete;  // Comparison of abstract types is not possible.
+      virtual bool operator!=(const Container&) const noexcept=delete; // Comparison of abstract types is not possible.
 
       /* ************************************************************************ */
 

@@ -83,14 +83,14 @@ public:
 
   // Specific member functions (inherited from LinearContainer)
 
-  const Data& operator[](unsigned long) const override; // Override (NonMutable) LinearContainer member (must throw std::out_of_range when out of range)
-  Data& operator[](unsigned long)  override; // Override (Mutable) LinearContainer member (must throw std::out_of_range when out of range)
+  virtual const Data& operator[](unsigned long) const override; // Override (NonMutable) LinearContainer member (must throw std::out_of_range when out of range)
+  virtual Data& operator[](unsigned long)  override; // Override (Mutable) LinearContainer member (must throw std::out_of_range when out of range)
 
-  const Data& Front() const override; // Override (NonMutable) LinearContainer member (must throw std::length_error when empty)
-  Data& Front()  override; // Override (Mutable) LinearContainer member (must throw std::length_error when empty)
+  virtual const Data& Front() const override; // Override (NonMutable) LinearContainer member (must throw std::length_error when empty)
+  virtual Data& Front()  override; // Override (Mutable) LinearContainer member (must throw std::length_error when empty)
 
-  const Data& Back() const override; // Override (NonMutable) LinearContainer member (must throw std::length_error when empty)
-  Data& Back()  override; // Override (Mutable) LinearContainer member (must throw std::length_error when empty)
+  virtual const Data& Back() const override; // Override (NonMutable) LinearContainer member (must throw std::length_error when empty)
+  virtual Data& Back()  override; // Override (Mutable) LinearContainer member (must throw std::length_error when empty)
 
 protected:
 
@@ -148,6 +148,9 @@ public:
 
   // Move assignment
   SortableVector<Data>& operator=(SortableVector<Data>&&);
+
+  virtual const Data& operator[](unsigned long) const override;
+  virtual  Data& operator[](unsigned long) override;
 
 protected:
 

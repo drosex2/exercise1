@@ -244,4 +244,13 @@ namespace lasd {
         Vector<Data>::operator=(std::move(vectorMove));
         return *this;
     }
+
+    template <typename Data>
+    const Data& SortableVector<Data>::operator[] (unsigned long i)const {
+        return Vector<Data>::operator[](i);
+    }
+    template <typename Data>
+     Data& SortableVector<Data>::operator[](unsigned long i){
+        return Vector<Data>::operator[](i);
+    }
 }

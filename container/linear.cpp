@@ -121,6 +121,16 @@ inline bool LinearContainer<Data>::operator!=(const LinearContainer& linearConta
 }
 /* ************************************************************************** */
 template <typename Data>
+inline bool SortableLinearContainer<Data>::operator==(const SortableLinearContainer<Data>& con) const noexcept{
+    return LinearContainer<Data>::operator==(con);
+}
+
+template <typename Data>
+inline bool SortableLinearContainer<Data>::operator!=(const SortableLinearContainer<Data>& con) const noexcept{
+    return LinearContainer<Data>::operator!=(con);
+}
+
+template <typename Data>
 void SortableLinearContainer<Data>::Sort() noexcept {
     QuickSort(0,size-1);
 }

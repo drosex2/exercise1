@@ -2,17 +2,17 @@
 #define MYLIST_HPP
 
 /* ************************************************************************** */
-#include "../list/list.hpp"
-#include "../container/container.hpp"
-#include "../container/mappable.hpp"
-#include "../zlasdtest/container/mappable.hpp"
-#include "../zlasdtest/container/traversable.hpp"
-#include "container.hpp"
+#include "../../list/list.hpp"
+#include "../../container/container.hpp"
+#include "../../container/mappable.hpp"
+#include "../../zlasdtest/container/mappable.hpp"
+#include "../../zlasdtest/container/traversable.hpp"
+#include "../container.hpp"
 #include <random>
 using namespace std;
 void listInt(){
     
-    cout<<"------TEST LIST INT--------"<<endl;
+    cout<<"--------------TEST LIST INT--------------"<<endl;
     
     unsigned long size,value;
     default_random_engine gen(random_device{}()); 
@@ -43,12 +43,12 @@ void listInt(){
     cout<<"Inserisci un valore da cercare nella lista: ";
     cin>>value;
     
-    cout << ((lista.Exists(value)) ? "Il valore e' presente" : "il valore non e' presente") << "!" << endl;
+    cout << ((lista.Exists(value)) ? "Il valore "+to_string(value)+" e' presente" : "il valore "+to_string(value)+" non e' presente") << "!" << endl;
 
     
 }
 void listDouble(){
-    cout<<"------TEST LIST DOUBLE--------"<<endl;
+    cout<<"--------------TEST LIST DOUBLE--------------"<<endl;
     unsigned long size;
     default_random_engine gen(random_device{}()); 
     uniform_real_distribution<double> dist(1, 1000);
@@ -76,7 +76,7 @@ void listDouble(){
     FoldPostOrder(lista,&FoldAdd<double>,0.32);
 }
 void listString(){
-    cout<<"------TEST LIST STRING--------"<<endl;
+    cout<<"--------------TEST LIST STRING--------------"<<endl;
     std::mt19937 mt(std::random_device{}());
     std::string characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     std::uniform_int_distribution<int> dist(0, characters.length() - 1);
@@ -93,9 +93,9 @@ void listString(){
     }
 
     cout<<"Front attuale:"<<lista.Front()<<endl;
-    FoldPostOrder(lista,&FoldAdd<string>,string("a"));
+    FoldPostOrder(lista,&FoldAdd<string>,string(""));
     lista.RemoveFromFront();
-    FoldPostOrder(lista,&FoldAdd<string>,string("a"));
+    FoldPreOrder(lista,&FoldAdd<string>,string(""));
     cout<<"Inserisci un indice: ";
     cin>>index;
     try{
@@ -103,7 +103,7 @@ void listString(){
     }catch(exception& exc){
         cout<<exc.what()<<endl;
     }
-    cout<<"fine?"<<endl;
+    
 }
 
 /* ************************************************************************** */
